@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0613238C27FB64A200F5AFF2 /* Storage+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0613238A27FB64A200F5AFF2 /* Storage+CoreDataClass.swift */; };
 		06EE7A7F27E4F80E00B42368 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EE7A7E27E4F80E00B42368 /* AppDelegate.swift */; };
 		06EE7A8127E4F80E00B42368 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EE7A8027E4F80E00B42368 /* SceneDelegate.swift */; };
 		06EE7A8327E4F80E00B42368 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EE7A8227E4F80E00B42368 /* ViewController.swift */; };
@@ -38,7 +37,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0613238A27FB64A200F5AFF2 /* Storage+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storage+CoreDataClass.swift"; sourceTree = "<group>"; };
 		06EE7A7B27E4F80E00B42368 /* StorageScanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StorageScanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06EE7A7E27E4F80E00B42368 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		06EE7A8027E4F80E00B42368 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,14 +78,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0613238E27FB64AA00F5AFF2 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				0613238A27FB64A200F5AFF2 /* Storage+CoreDataClass.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		06EE7A7227E4F80E00B42368 = {
 			isa = PBXGroup;
 			children = (
@@ -111,7 +101,6 @@
 		06EE7A7D27E4F80E00B42368 /* StorageScanner */ = {
 			isa = PBXGroup;
 			children = (
-				0613238E27FB64AA00F5AFF2 /* Model */,
 				06EE7A7E27E4F80E00B42368 /* AppDelegate.swift */,
 				06EE7A8027E4F80E00B42368 /* SceneDelegate.swift */,
 				06EE7A8227E4F80E00B42368 /* ViewController.swift */,
@@ -275,7 +264,6 @@
 				06EE7A8327E4F80E00B42368 /* ViewController.swift in Sources */,
 				06EE7A7F27E4F80E00B42368 /* AppDelegate.swift in Sources */,
 				06EE7A8927E4F80E00B42368 /* StorageScanner.xcdatamodeld in Sources */,
-				0613238C27FB64A200F5AFF2 /* Storage+CoreDataClass.swift in Sources */,
 				06EE7A8127E4F80E00B42368 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
