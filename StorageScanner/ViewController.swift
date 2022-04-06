@@ -41,9 +41,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             textfield.placeholder = "Storage Name"
         }
         
-        alert.addTextField { (textfield) in
-            textfield.placeholder = "Quantity"
-        }
+//        alert.addTextField { (textfield) in
+//            textfield.placeholder = "Quantity"
+//        }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(cancelAction)
@@ -55,8 +55,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             
             let nameTFT = alert.textFields?[0].text
             storage.name = nameTFT
-            let Quantity = alert.textFields?[1].text
-            storage.quantity = Quantity
+//            let Quantity = alert.textFields?[1].text
+//            storage.quantity = Quantity
             
             self.storages.append(storage)
             self.tableView.reloadData()
@@ -94,6 +94,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if editingStyle == .delete {
             let storage = storages[indexPath.row]
             appDelegate.persistentContainer.viewContext.delete(storage)
+            try! appDelegate.persistentContainer.viewContext.save()
             getData()
         }
         tableView.reloadData()
