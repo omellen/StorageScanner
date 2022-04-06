@@ -10,12 +10,12 @@ import CoreData
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-   
     @IBOutlet weak var tableView: UITableView!
     
     var storages: [Storage] = []
-    
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
+    var selectedStorage: String = ""
     
     override func viewDidLoad()
     {
@@ -99,6 +99,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         tableView.reloadData()
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "ItemsSegue", sender: self)
+        selectedStorage = "\(storages[indexPath.row].name!)"
+    }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = ItemsViewController(nibName: "ItemsViewController", bundle: nil)
+        vc.text = "\(selectedStorage)"
+        
+    }
 }
 

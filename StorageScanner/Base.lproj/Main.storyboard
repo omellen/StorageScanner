@@ -45,16 +45,17 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="MjW-1P-Yh9" id="Ia9-WU-6Ca"/>
+                        <segue destination="hMt-5G-wbD" kind="show" identifier="ItemsSegue" id="s2I-6s-MVK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="928.98550724637687" y="69.642857142857139"/>
         </scene>
-        <!--View Controller-->
+        <!--ItemsViewController-->
         <scene sceneID="u4M-9B-dm9">
             <objects>
-                <viewController id="hMt-5G-wbD" sceneMemberID="viewController">
+                <viewController title="ItemsViewController" id="hMt-5G-wbD" customClass="ItemsViewController" customModule="StorageScanner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="x4e-OU-bmt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -80,8 +81,8 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pantry" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="COX-xm-hhs">
-                                <rect key="frame" x="20" y="106" width="86" height="37"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Storage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="COX-xm-hhs">
+                                <rect key="frame" x="20" y="106" width="111" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
@@ -92,6 +93,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="UEI-Cu-fbt"/>
+                    <connections>
+                        <outlet property="storageName" destination="COX-xm-hhs" id="Mnf-yO-fNi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nJh-Tf-PE8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
