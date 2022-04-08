@@ -71,7 +71,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if let myStorages = try? appDelegate.persistentContainer.viewContext.fetch(Storage.fetchRequest())
         {
             storages = myStorages
-        } else
+        }
+        else
         {
             printContent("error in fetching data")
         }
@@ -90,6 +91,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.textLabel?.text = self.storages[indexPath.row].name
         return cell
     }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let storage = storages[indexPath.row]
@@ -98,16 +100,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             getData()
         }
         tableView.reloadData()
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "ItemsSegue", sender: self)
-        selectedStorage = "\(storages[indexPath.row].name!)"
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = ItemsViewController(nibName: "ItemsViewController", bundle: nil)
-        vc.text = "\(selectedStorage)"
         
     }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        selectedStorage = "\(storages[indexPath.row].name!)"
+        self.performSegue(withIdentifier: "ItemsSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        let vc = segue.destination as! ItemsViewController
+        vc.storageTitle = selectedStorage
+    }
+    
 }
 

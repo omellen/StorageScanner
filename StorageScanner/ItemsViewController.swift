@@ -11,12 +11,12 @@ class ItemsViewController: UIViewController {
 
     @IBOutlet weak var storageName: UILabel!
     
-    var text = ""
+    var storageTitle: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        print(text)
+        storageName.text = storageTitle
+        print(storageTitle)
     }
     
 
