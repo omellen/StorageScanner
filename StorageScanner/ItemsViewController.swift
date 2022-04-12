@@ -12,6 +12,8 @@ class ItemsViewController: UIViewController {
     @IBOutlet weak var storageName: UILabel!
     var storageTitle: String = ""
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         storageName.text = storageTitle
