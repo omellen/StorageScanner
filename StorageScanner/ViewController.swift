@@ -66,6 +66,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.present(alert, animated: true, completion: nil)
     }
     
+    
     func getData()
     {
         if let myStorages = try? appDelegate.persistentContainer.viewContext.fetch(Storage.fetchRequest())
@@ -86,21 +87,46 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell",
-                                                    for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
         cell.textLabel?.text = self.storages[indexPath.row].name
+        cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
         return cell
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let storage = storages[indexPath.row]
-            appDelegate.persistentContainer.viewContext.delete(storage)
-            try! appDelegate.persistentContainer.viewContext.save()
-            getData()
-        }
-        tableView.reloadData()
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
+        let editAction = UITableViewRowAction(style: .default, title: "Edit") { (action, indexPath) in
+            let alert = UIAlertController(title: "", message: "Edit list item", preferredStyle: .alert)
+            alert.addTextField { textField in
+                textField.text = self.storages[indexPath.row].name
+            }
+            alert.addAction(UIAlertAction(title: "Update", style: .default, handler: { updateAction in
+                let storage = self.storages[indexPath.row]
+                self.storages[indexPath.row].name = alert.textFields![0].text
+                storage.name = alert.textFields![0].text
+                try! self.appDelegate.persistentContainer.viewContext.save()
+                self.getData()
+                
+                self.tableView.reloadRows(at: [indexPath], with: .fade)
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            self.present(alert, animated: false)
+        }
+        
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { action, indexPath in
+            let storage = self.storages[indexPath.row]
+            self.appDelegate.persistentContainer.viewContext.delete(storage)
+            try! self.appDelegate.persistentContainer.viewContext.save()
+            self.getData()
+            tableView.reloadData()
+        }
+        
+        return [deleteAction, editAction]
     }
     
     
@@ -108,6 +134,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     {
         selectedStorage = "\(storages[indexPath.row].name!)"
         self.performSegue(withIdentifier: "ItemsSegue", sender: self)
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
